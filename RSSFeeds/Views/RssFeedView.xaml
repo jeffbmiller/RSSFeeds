@@ -2,14 +2,22 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="RSSFeeds.RssFeedView" Title="RSS Feeds">
+    x:Class="RSSFeeds.RssFeedView" Title="RSS Feeds" >
     <ContentPage.Content>
         
     <ListView x:Name="rsslist" ItemsSource="{Binding Records}" SelectedItem="{Binding Selected}" ItemTapped="OnItemSelected">
     <ListView.ItemTemplate>
       <DataTemplate>
-        <ImageCell ImageSource="{Binding Image}" Text="{Binding Title}" >                
-        </ImageCell>
+<!--        <ImageCell ImageSource="{Binding Image}" Text="{Binding Title}" >             
+
+        </ImageCell>-->
+        <ViewCell>
+        	<StackLayout Orientation="Horizontal" Spacing="3" >
+        		<Image Source="{Binding Image}" HorizontalOptions="Start"/>
+        		<Label Text="{Binding Title}" />
+        	</StackLayout>
+        </ViewCell>
+
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>  
