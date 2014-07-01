@@ -33,7 +33,7 @@ namespace RSSFeeds
 
         public bool CanReload()
         {
-            return !ShowProgressBar;
+            return !ShowActivityIndicator;
         }
 
         #endregion
@@ -66,11 +66,11 @@ namespace RSSFeeds
 
         private async void GetRecords()
         {
-            ShowProgressBar = true;
+            ShowActivityIndicator = true;
             var result = await GetRecordsAsync();
             records = result.Select(x=> new RssRecordViewModel(x)).ToList();
             RaisePropertyChanged("Records");
-            ShowProgressBar = false;
+            ShowActivityIndicator = false;
         }
 
         private Task<IEnumerable<RssRecord>> GetRecordsAsync()

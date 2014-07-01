@@ -15,16 +15,16 @@ namespace RSSFeeds
                 }
         }
 
-        private bool showProgressBar;
-        public bool ShowProgressBar
+        private bool showActivityIndicator;
+        public bool ShowActivityIndicator
         {
-            get { return showProgressBar; }
+            get { return showActivityIndicator; }
             set
             {
-                if (showProgressBar == value)
+                if (showActivityIndicator == value)
                     return;
-                showProgressBar = value;
-                RaisePropertyChanged("ShowProgressBar");
+                showActivityIndicator = value;
+                RaisePropertyChanged("ShowActivityIndicator");
             }
         }
     }
