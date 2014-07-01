@@ -3,8 +3,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="RSSFeeds.RssFeedView" Title="RSS Feeds" >
+    <ContentPage.ToolbarItems>
+    	<ToolbarItem Name="Reload" Command="{Binding ReloadCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        
+        <StackLayout>
+    <ProgressBar x:Name="progressBar" IsVisible="{Binding ShowProgressBar}" />
     <ListView x:Name="rsslist" ItemsSource="{Binding Records}" SelectedItem="{Binding Selected}" ItemTapped="OnItemSelected">
     <ListView.ItemTemplate>
       <DataTemplate>
@@ -17,10 +21,12 @@
         		<Label Text="{Binding Title}" />
         	</StackLayout>
         </ViewCell>
-
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>  
+
+</StackLayout>
     </ContentPage.Content>
+
 </ContentPage>
 

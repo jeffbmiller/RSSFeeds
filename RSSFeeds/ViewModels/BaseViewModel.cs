@@ -14,5 +14,18 @@ namespace RSSFeeds
                     PropertyChanged(this, new PropertyChangedEventArgs(property));
                 }
         }
+
+        private bool showProgressBar;
+        public bool ShowProgressBar
+        {
+            get { return showProgressBar; }
+            set
+            {
+                if (showProgressBar == value)
+                    return;
+                showProgressBar = value;
+                RaisePropertyChanged("ShowProgressBar");
+            }
+        }
     }
 }
