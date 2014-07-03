@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Xml.Linq;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace RSSFeeds
 {

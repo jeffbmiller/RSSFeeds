@@ -8,6 +8,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+<!--        <Button Text="Reload" Command="{Binding ReloadCommand}" />-->
 	        <ActivityIndicator x:Name="activityInd" Color="Blue" IsVisible="true" IsRunning="{Binding ShowActivityIndicator}" ></ActivityIndicator>
 		    <ListView x:Name="rsslist" ItemsSource="{Binding Records}" SelectedItem="{Binding Selected}" ItemTapped="OnItemSelected">
 		    <ListView.ItemTemplate>

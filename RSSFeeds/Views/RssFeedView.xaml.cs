@@ -10,6 +10,7 @@ namespace RSSFeeds
 		{
 			InitializeComponent ();
             BindingContext = new RssFeedViewModel();
+
 		}
 
         public void OnItemSelected(object sender, ItemTappedEventArgs args)
