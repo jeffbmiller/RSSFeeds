@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace RSSFeeds
 {
@@ -52,8 +53,8 @@ namespace RSSFeeds
             }
         }
 
-        private IEnumerable<RssRecordViewModel> records;
-        public IEnumerable<RssRecordViewModel> Records
+        private ObservableCollection<RssRecordViewModel> records;
+        public ObservableCollection<RssRecordViewModel> Records
         {
             get {
                 if (records == null)
@@ -68,7 +69,7 @@ namespace RSSFeeds
         {
             ShowActivityIndicator = true;
             var result = await GetRecordsAsync();
-            records = result.Select(x=> new RssRecordViewModel(x)).ToList();
+            records = new ObservableCollection<RssRecordViewModel>(result.Select(x=> new RssRecordViewModel(x)).ToList());
             RaisePropertyChanged("Records");
             ShowActivityIndicator = false;
         }

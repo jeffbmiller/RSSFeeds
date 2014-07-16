@@ -7,7 +7,8 @@ namespace RSSFeeds
     {
         public static Page GetMainPage()
         {	
-            return new NavigationPage(new RssFeedView());
+//            return new NavigationPage(new RssFeedView());
+            return new NavigationPage(new RssFeedView2());
         }
     }
 }

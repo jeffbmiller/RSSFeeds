@@ -5,6 +5,7 @@
     x:Class="RSSFeeds.RssFeedView" Title="RSS Feeds" >
     <ContentPage.ToolbarItems>
     	<ToolbarItem Name="Reload" Command="{Binding ReloadCommand}"/>
+
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
