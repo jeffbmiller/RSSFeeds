@@ -14,6 +14,7 @@ namespace RSSFeeds
         public RssFeedViewModel()
         {
             this.service = new RssFeedService();
+            Records = new ObservableCollection<RssRecordViewModel>();
             InitalizeCommands();
         }
 
@@ -26,10 +27,16 @@ namespace RSSFeeds
             ReloadCommand = new Command(() => OnReload(), () => CanReload());
         }
 
-        private void OnReload()
+        public async void OnReload()
         {
-            records = null;
+            Records.Clear();
+            ShowActivityIndicator = true;
+            var records = await GetRecordsAsync();
+            foreach (var record in records)
+                Records.Add(new RssRecordViewModel(record));
+ 
             RaisePropertyChanged("Records");
+            ShowActivityIndicator = false;
         }
 
         public bool CanReload()
@@ -52,27 +59,9 @@ namespace RSSFeeds
                 RaisePropertyChanged("Selected");
             }
         }
-
-        private ObservableCollection<RssRecordViewModel> records;
-        public ObservableCollection<RssRecordViewModel> Records
-        {
-            get {
-                if (records == null)
-                    GetRecords();
-                return records;
-            }
-        }
-
+          
+        public ObservableCollection<RssRecordViewModel> Records { get; set; }
         #endregion
-
-        private async void GetRecords()
-        {
-            ShowActivityIndicator = true;
-            var result = await GetRecordsAsync();
-            records = new ObservableCollection<RssRecordViewModel>(result.Select(x=> new RssRecordViewModel(x)).ToList());
-            RaisePropertyChanged("Records");
-            ShowActivityIndicator = false;
-        }
 
         private Task<IEnumerable<RssRecord>> GetRecordsAsync()
         {

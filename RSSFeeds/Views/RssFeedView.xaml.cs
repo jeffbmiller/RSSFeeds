@@ -21,6 +21,15 @@ namespace RSSFeeds
             Navigation.PushAsync(new RssWebView(item));
             rsslist.SelectedItem = null;
         }
+
+        private RssFeedViewModel ViewModel { get { return BindingContext as RssFeedViewModel; } }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (ViewModel.Records.Count == 0)
+                ViewModel.OnReload();
+        }
 	}
 }
 
